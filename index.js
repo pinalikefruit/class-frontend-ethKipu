@@ -10,14 +10,14 @@ async function connect() {
 }
 
 async function mint() {
-    const ethAmount = document.getElementById("ethAmount").value
+    const tokenAmount = document.getElementById("tokenAmount").value
     
     if(typeof window.ethereum !== "undefined") {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
         const address = await signer.getAddress();
         const contract = new ethers.Contract(contractAddress,abi,signer)
-        await contract.mint(address,ethAmount.toString())
+        await contract.mint(address,tokenAmount.toString())
         
     }
 }
